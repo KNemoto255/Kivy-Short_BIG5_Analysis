@@ -1,0 +1,770 @@
+Game:
+<Game>:
+
+    #スクリーンマネージャー下にスクリーンを配置
+    ScreenManager:
+        id: sm
+        size: root.width, root.height
+
+        #デフォルト画面
+        Screen:
+            name: "screen_default"
+            BoxLayout:
+                orientation: "vertical"
+                Label:
+                    text: "ショート・ビッグファイブ分析"
+                    font_size: "35dp"
+                Image:
+                    source: 'sb5a_image.png'
+                    size: self.texture_size
+                Label:
+                    text: "全10問の質問に答えてください。"
+                    font_size: "25dp"
+
+                BoxLayout:
+                    orientation: "horizontal"
+                    size_hint: 1, 0.5
+                    spacing: 10
+                    padding: 20
+                    Button:
+                        text: "説明"
+                        on_press: root.screen_transition_btn(sm, "screen_explanation")
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "開始"
+                        on_press: root.screen_transition_btn(sm, "screen_q1")
+                        background_color: 0.3,0.4,0.5,1
+        #説明画面
+        Screen:
+            name: "screen_explanation"
+            BoxLayout:
+                orientation: "vertical"
+                Label:
+                    text: ""
+                    font_size: "16dp"
+                    text_size: 550, None
+                Label:
+                    text: "ビッグファイブ分析について"
+                    font_size: "40dp"
+                Label:
+                    text: ""
+                    font_size: "16dp"
+                    text_size: 550, None
+                Label:
+                    text: "ビッグファイブ(Big5)は人間の性格を表す5因子で、「個性は5種類の軸で説明できる」という説に基づいた物になります。"
+                    font_size: "16dp"
+                    text_size: 550, None
+                Label:
+                    text: "仕事や自己実現に適した因子を特定することで、「苦手なことをやらされている・している」というミスマッチを減らすことができます。"
+                    font_size: "16dp"
+                    text_size: 550, None
+                Label:
+                    text: ""
+                    font_size: "16dp"
+                    text_size: 550, None
+
+                #知的好奇心
+                Label:
+                    text:"知的好奇心の高い人"
+                    font_size: "30dp"
+                    text_size: 500, None
+                    halign: 'left'
+                Image:
+                    source: 'openess_icon.png'
+                    size: (64,64)
+                Label:
+                    text: "感情や美しさに敏感で、新しいことに挑戦する意欲が強い傾向があります"
+                    font_size: "14dp"
+                    text_size: 550, None
+
+                #良識性
+                Label:
+                    text:" 良識性の高い人"
+                    font_size: "30dp"
+                    text_size: 550, None
+                    halign: 'left'
+                Image:
+                    source: 'conscientius_icon.png'
+                    size: (64,64)
+                Label:
+                    text: "努力を怠らない、自制心や自己評価が高いといった傾向があります"
+                    font_size: "14dp"
+                    text_size: 550, None
+
+                #外向性
+                Label:
+                    text:"外向性の高い人"
+                    font_size: "30dp"
+                    text_size: 500, None
+                    halign: 'left'
+                Image:
+                    source: 'extraversion_icon.png'
+                    size: (64,64)
+                Label:
+                    text: "エネルギッシュで社会性が高い、会話を好む、陽気といった傾向があります"
+                    font_size: "14dp"
+                    text_size: 550, None
+
+                #協調性
+                Label:
+                    text:"協調性の高い人"
+                    font_size: "30dp"
+                    text_size: 500, None
+                    halign: 'left'
+                Image:
+                    source: 'agreeable_icon.png'
+                    size: (64,64)
+                Label:
+                    text: "他者を信頼する、思いやりがある、親切であるといった傾向があります"
+                    font_size: "14dp"
+                    text_size: 550, None
+
+                 #情緒安定性
+                Label:
+                    text: "情緒安定性の高い人"
+                    font_size: "30dp"
+                    text_size: 500, None
+                    halign: 'left'
+                Image:
+                    source: 'neuroticism_icon.png'
+                    size: (64,64)
+                Label:
+                    text: "合理的でストレスに強い、自信が高いといった傾向があります"
+                    font_size: "14dp"
+                    text_size: 550, None
+
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint: 1, 3.5
+                    spacing: 10
+                    padding: 20
+                    Button:
+                        text: "戻る"
+                        on_press: root.screen_transition_btn(sm, "screen_default")
+                        background_color: 0.3,0.4,0.5,1
+        #1問目
+        Screen:
+            name: "screen_q1"
+            BoxLayout:
+                orientation: "vertical"
+                Label:
+                    text: "1問目"
+                    font_size: root.fontsize_h1
+                Label:
+                    text: "好奇心が強く、探求が好き"
+                    font_size: root.fontsize_h2
+
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint: 1, 2.5
+                    spacing: 10
+                    padding: 20
+                    Button:
+                        text: "良くあてはまる"
+                        on_press: root.screen_answer_btn(sm, "screen_q2","openness", 4)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "少しあてはまる"
+                        on_press: root.screen_answer_btn(sm, "screen_q2","openness", 3)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "わからない"
+                        on_press: root.screen_answer_btn(sm, "screen_q2","openness", 2)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "あまりあてはまらない"
+                        on_press: root.screen_answer_btn(sm, "screen_q2","openness", 1)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "全くあてはまらない"
+                        on_press: root.screen_answer_btn(sm, "screen_q2","openness", 0)
+                        background_color: 0.3,0.4,0.5,1
+
+        #2問目
+        Screen:
+            name: "screen_q2"
+            BoxLayout:
+                orientation: "vertical"
+                Label:
+                    text: "2問目"
+                    font_size: root.fontsize_h1
+                Label:
+                    text: "計画的・効率的に物事をこなしている"
+                    font_size: root.fontsize_h2
+
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint: 1, 2.5
+                    spacing: 10
+                    padding: 20
+                    Button:
+                        text: "良くあてはまる"
+                        on_press: root.screen_answer_btn(sm, "screen_q3","conscient", 4)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "少しあてはまる"
+                        on_press: root.screen_answer_btn(sm, "screen_q3","conscient", 3)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "わからない"
+                        on_press: root.screen_answer_btn(sm, "screen_q3","conscient", 2)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "あまりあてはまらない"
+                        on_press: root.screen_answer_btn(sm, "screen_q3","conscient", 1)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "全くあてはまらない"
+                        on_press: root.screen_answer_btn(sm, "screen_q3","conscient", 0)
+                        background_color: 0.3,0.4,0.5,1
+
+        #3問目
+        Screen:
+            name: "screen_q3"
+            BoxLayout:
+                orientation: "vertical"
+                Label:
+                    text: "3問目"
+                    font_size: root.fontsize_h1
+                Label:
+                    text: "初対面の人でも会話を楽しめる"
+                    font_size: root.fontsize_h2
+
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint: 1, 2.5
+                    spacing: 10
+                    padding: 20
+                    Button:
+                        text: "良くあてはまる"
+                        on_press: root.screen_answer_btn(sm, "screen_q4","extravers", 4)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "少しあてはまる"
+                        on_press: root.screen_answer_btn(sm, "screen_q4","extravers", 3)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "わからない"
+                        on_press: root.screen_answer_btn(sm, "screen_q4","extravers", 2)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "あまりあてはまらない"
+                        on_press: root.screen_answer_btn(sm, "screen_q4","extravers", 1)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "全くあてはまらない"
+                        on_press: root.screen_answer_btn(sm, "screen_q4","extravers", 0)
+                        background_color: 0.3,0.4,0.5,1
+
+        #4問目
+        Screen:
+            name: "screen_q4"
+            BoxLayout:
+                orientation: "vertical"
+                Label:
+                    text: "4問目"
+                    font_size: root.fontsize_h1
+                Label:
+                    text: "外国人に対して思いやりがあり差別しない"
+                    font_size: root.fontsize_h2
+
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint: 1, 2.5
+                    spacing: 10
+                    padding: 20
+                    Button:
+                        text: "良くあてはまる"
+                        on_press: root.screen_answer_btn(sm, "screen_q5","agreeable", 4)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "少しあてはまる"
+                        on_press: root.screen_answer_btn(sm, "screen_q5","agreeable", 3)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "わからない"
+                        on_press: root.screen_answer_btn(sm, "screen_q5","agreeable", 2)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "あまりあてはまらない"
+                        on_press: root.screen_answer_btn(sm, "screen_q5","agreeable", 1)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "全くあてはまらない"
+                        on_press: root.screen_answer_btn(sm, "screen_q5","agreeable", 0)
+                        background_color: 0.3,0.4,0.5,1
+
+        #5問目
+        Screen:
+            name: "screen_q5"
+            BoxLayout:
+                orientation: "vertical"
+                Label:
+                    text: "5問目"
+                    font_size: root.fontsize_h1
+                Label:
+                    text: "リラックスして落ち着いているタイプだ"
+                    font_size: root.fontsize_h2
+
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint: 1, 2.5
+                    spacing: 10
+                    padding: 20
+                    Button:
+                        text: "良くあてはまる"
+                        on_press: root.screen_answer_btn(sm, "screen_q6","neurotic", 4)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "少しあてはまる"
+                        on_press: root.screen_answer_btn(sm, "screen_q6","neurotic", 3)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "わからない"
+                        on_press: root.screen_answer_btn(sm, "screen_q6","neurotic", 2)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "あまりあてはまらない"
+                        on_press: root.screen_answer_btn(sm, "screen_q6","neurotic", 1)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "全くあてはまらない"
+                        on_press: root.screen_answer_btn(sm, "screen_q6","neurotic", 0)
+                        background_color: 0.3,0.4,0.5,1
+        #6問目
+        Screen:
+            name: "screen_q6"
+            BoxLayout:
+                orientation: "vertical"
+                Label:
+                    text: "6問目"
+                    font_size: root.fontsize_h1
+                Label:
+                    text: "保守的で現実的なタイプだ"
+                    font_size: root.fontsize_h2
+
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint: 1, 2.5
+                    spacing: 10
+                    padding: 20
+                    Button:
+                        text: "良くあてはまる"
+                        on_press: root.screen_answer_btn(sm, "screen_q7","openness", 0)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "少しあてはまる"
+                        on_press: root.screen_answer_btn(sm, "screen_q7","openness", 1)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "わからない"
+                        on_press: root.screen_answer_btn(sm, "screen_q7","openness", 2)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "あまりあてはまらない"
+                        on_press: root.screen_answer_btn(sm, "screen_q7","openness", 3)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "全くあてはまらない"
+                        on_press: root.screen_answer_btn(sm, "screen_q7","openness", 4)
+                        background_color: 0.3,0.4,0.5,1
+        #7問目
+        Screen:
+            name: "screen_q7"
+            BoxLayout:
+                orientation: "vertical"
+                Label:
+                    text: "7問目"
+                    font_size: root.fontsize_h1
+                Label:
+                    text: "後先考えないで衝動的な行動をする"
+                    font_size: root.fontsize_h2
+
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint: 1, 2.5
+                    spacing: 10
+                    padding: 20
+                    Button:
+                        text: "良くあてはまる"
+                        on_press: root.screen_answer_btn(sm, "screen_q8","conscient", 0)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "少しあてはまる"
+                        on_press: root.screen_answer_btn(sm, "screen_q8","conscient", 1)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "わからない"
+                        on_press: root.screen_answer_btn(sm, "screen_q8","conscient", 2)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "あまりあてはまらない"
+                        on_press: root.screen_answer_btn(sm, "screen_q8","conscient", 3)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "全くあてはまらない"
+                        on_press: root.screen_answer_btn(sm, "screen_q8","conscient", 4)
+                        background_color: 0.3,0.4,0.5,1
+
+        #8問目
+        Screen:
+            name: "screen_q8"
+            BoxLayout:
+                orientation: "vertical"
+                Label:
+                    text: "8問目"
+                    font_size: root.fontsize_h1
+                Label:
+                    text: "恥ずかしがり屋で物静かなタイプだ"
+                    font_size: root.fontsize_h2
+
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint: 1, 2.5
+                    spacing: 10
+                    padding: 20
+                    Button:
+                        text: "良くあてはまる"
+                        on_press: root.screen_answer_btn(sm, "screen_q9","extravers", 0)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "少しあてはまる"
+                        on_press: root.screen_answer_btn(sm, "screen_q9","extravers", 1)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "わからない"
+                        on_press: root.screen_answer_btn(sm, "screen_q9","extravers", 2)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "あまりあてはまらない"
+                        on_press: root.screen_answer_btn(sm, "screen_q9","extravers", 3)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "全くあてはまらない"
+                        on_press: root.screen_answer_btn(sm, "screen_q9","extravers", 4)
+                        background_color: 0.3,0.4,0.5,1
+
+        #9問目
+        Screen:
+            name: "screen_q9"
+            BoxLayout:
+                orientation: "vertical"
+                Label:
+                    text: "9問目"
+                    font_size: root.fontsize_h1
+                Label:
+                    text: "冷淡で思ったことを口にする"
+                    font_size: root.fontsize_h2
+
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint: 1, 2.5
+                    spacing: 10
+                    padding: 20
+                    Button:
+                        text: "良くあてはまる"
+                        on_press: root.screen_answer_btn(sm, "screen_q10","agreeable", 0)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "少しあてはまる"
+                        on_press: root.screen_answer_btn(sm, "screen_q10","agreeable", 1)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "わからない"
+                        on_press: root.screen_answer_btn(sm, "screen_q10","agreeable", 2)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "あまりあてはまらない"
+                        on_press: root.screen_answer_btn(sm, "screen_q10","agreeable", 3)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "全くあてはまらない"
+                        on_press: root.screen_answer_btn(sm, "screen_q10","agreeable", 4)
+                        background_color: 0.3,0.4,0.5,1
+
+        #10問目
+        Screen:
+            name: "screen_q10"
+            BoxLayout:
+                orientation: "vertical"
+                Label:
+                    text: "10問目"
+                    font_size: root.fontsize_h1
+                Label:
+                    text: "心配事が多くて不安になりやすい"
+                    font_size: root.fontsize_h2
+
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint: 1, 2.5
+                    spacing: 10
+                    padding: 20
+                    Button:
+                        text: "良くあてはまる"
+                        on_press: root.screen_answer_btn(sm, "screen_result","neurotic", 0)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "少しあてはまる"
+                        on_press: root.screen_answer_btn(sm, "screen_result","neurotic", 1)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "わからない"
+                        on_press: root.screen_answer_btn(sm, "screen_result","neurotic", 2)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "あまりあてはまらない"
+                        on_press: root.screen_answer_btn(sm, "screen_result","neurotic", 3)
+                        background_color: 0.3,0.4,0.5,1
+                    Button:
+                        text: "全くあてはまらない"
+                        on_press: root.screen_answer_btn(sm, "screen_result","neurotic", 4)
+                        background_color: 0.3,0.4,0.5,1
+
+        #結果画面
+        Screen:
+            name: "screen_result"
+            BoxLayout:
+                orientation: "vertical"
+                Label:
+                    text: ""
+                    font_size: "16dp"
+                    text_size: 550, None
+                Label:
+                    text: "分析結果"
+                    font_size: "40dp"
+                Label:
+                    text: ""
+                    font_size: "16dp"
+                    text_size: 550, None
+
+
+                #知的好奇心
+                Label:
+                    text:"知的好奇心"
+                    font_size: "30dp"
+                    text_size: 500, None
+                    halign: 'left'
+                Image:
+                    source: 'openess_icon.png'
+                    size: (64,64)
+                Label:
+                    id: openness_per
+                    text: ""
+                    font_size: "25dp"
+                    text_size: 550, None
+                ProgressBar:
+                    id: openness_PB
+                    size: root.width/2, 100
+                    pos: root.width * 0.25, 10
+                    value: 0
+
+                #良識性
+                Label:
+                    text:" 良識性"
+                    font_size: "30dp"
+                    text_size: 550, None
+                    halign: 'left'
+                Image:
+                    source: 'conscientius_icon.png'
+                    size: (64,64)
+                Label:
+                    id: conscient_per
+                    text: ""
+                    font_size: "25dp"
+                    text_size: 550, None
+                ProgressBar:
+                    id: conscient_PB
+                    size: root.width/2, 100
+                    pos: root.width * 0.25, 10
+                    value: 0
+
+                #外向性
+                Label:
+                    text:"外向性"
+                    font_size: "30dp"
+                    text_size: 500, None
+                    halign: 'left'
+                Image:
+                    source: 'extraversion_icon.png'
+                    size: (64,64)
+                Label:
+                    id: extravers_per
+                    text: ""
+                    font_size: "25dp"
+                    text_size: 550, None
+                ProgressBar:
+                    id: extravers_PB
+                    size: root.width/2, 100
+                    pos: root.width * 0.25, 10
+                    value: 0
+
+                #協調性
+                Label:
+                    text:"協調性"
+                    font_size: "30dp"
+                    text_size: 500, None
+                    halign: 'left'
+                Image:
+                    source: 'agreeable_icon.png'
+                    size: (64,64)
+                Label:
+                    id: agreeable_per
+                    text: ""
+                    font_size: "25dp"
+                    text_size: 550, None
+                ProgressBar:
+                    id: agreeable_PB
+                    size: root.width/2, 100
+                    pos: root.width * 0.25, 10
+                    value: 0
+
+                 #情緒安定性
+                Label:
+                    text: "情緒安定性"
+                    font_size: "30dp"
+                    text_size: 500, None
+                    halign: 'left'
+                Image:
+                    source: 'neuroticism_icon.png'
+                    size: (64,64)
+                Label:
+                    id: neurotic_per
+                    text: ""
+                    font_size: "25dp"
+                    text_size: 550, None
+                ProgressBar:
+                    id: neurotic_PB
+                    size: root.width/2, 100
+                    pos: root.width * 0.25, 10
+                    value: 0
+
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint: 1, 4
+                    spacing: 10
+                    padding: 20
+                    Button:
+                        text: "次へ"
+                        on_press: root.screen_transition_btn(sm, "screen_result02")
+                        background_color: 0.3,0.4,0.5,1
+
+        #完了後の解説
+        Screen:
+            name: "screen_result02"
+            BoxLayout:
+                orientation: "vertical"
+
+                Label:
+                    text: ""
+                    font_size: "16dp"
+                    text_size: 550, None
+                Label:
+                    text: "分析結果を活かす方法"
+                    font_size: "40dp"
+                Label:
+                    text: ""
+                    font_size: "16dp"
+                    text_size: 550, None
+
+                Label:
+                    text: "特性が強く偏っている人は良くも悪くもその影響を強く受けていて、さまざまな形で”個性的”になることができます。"
+                    font_size: "16dp"
+                    text_size: 550, None
+                Label:
+                    text: "特性は「高ければ高いほど良い」のではなく、実際には仕事や人間関係により要する特性は多様であるという点に注意してください。"
+                    font_size: "16dp"
+                    text_size: 550, None
+                Label:
+                    text: ""
+                    font_size: "16dp"
+                    text_size: 550, None
+
+                #知的好奇心
+                Image:
+                    source: "openess_icon.png"
+                    size: (64,64)
+                Label:
+                    text: "知的好奇心の高い人は新しい経験に対してオープンであり、知的で想像が広がりやすい傾向があります"
+                    font_size: "13dp"
+                    text_size: 550, None
+                Label:
+                    text: "知的好奇心が低い人は変化を好まず感覚的であり、権威に従順な面があります"
+                    font_size: "13dp"
+                    text_size: 550, None
+                Label:
+                    text: ""
+                    font_size: "13dp"
+
+                #良識性
+                Image:
+                    source: "conscientius_icon.png"
+                    size: (64,64)
+                Label:
+                    text: "良識性の高い人は責任感があり、計画性を持ち勤勉です"
+                    font_size: "13dp"
+                    text_size: 550, None
+                Label:
+                    text: "良識性の低い人は無責任で衝動性が強く、場当たり的な面があります"
+                    font_size: "13dp"
+                    text_size: 550, None
+                Label:
+                    text: ""
+                    font_size: "13dp"
+
+                #外向性
+                Image:
+                    source: "extraversion_icon.png"
+                    size: (64,64)
+                Label:
+                    text: "外向性の高い人は社会的で、しゃべり続けたり活発に動き回ったりするのが得意な傾向があります"
+                    font_size: "13dp"
+                    text_size: 550, None
+                Label:
+                    text: "外向性が低い人は内向的となり、引っ込み思案で無口・身体活動も低調です"
+                    font_size: "13dp"
+                    text_size: 550, None
+                Label:
+                    text: ""
+                    font_size: "13dp"
+
+                #協調性
+                Image:
+                    source: "agreeable_icon.png"
+                    size: (64,64)
+                Label:
+                    text: "協調性の高い人は親切で気前が良い一方で、だまされやすく自分なりの考えを持ちにくい傾向があります"
+                    font_size: "13dp"
+                    text_size: 550, None
+                Label:
+                    text: "協調性の低い人は利己的で非協力的ですが、集団と距離を置いて自分の考えを持つことが得意です"
+                    font_size: "13dp"
+                    text_size: 550, None
+                Label:
+                    text: ""
+                    font_size: "13dp"
+
+                #情緒安定性
+                Image:
+                    source: "neuroticism_icon.png"
+                    size: (64,64)
+                Label:
+                    text: "情緒安定性は神経症傾向（Neuroticism）とも呼ばれ、不安を引きずる度合いを表します"
+                    font_size: "13dp"
+                    text_size: 550, None
+                Label:
+                    text: "仕事や自己実現は持続的なストレス源であるため、情緒安定性の低い人は長期的な活動が難しい傾向があります"
+                    font_size: "13dp"
+                    text_size: 550, None
+                Label:
+                    text: ""
+                    font_size: "13dp"
+
+                BoxLayout:
+                    orientation: "vertical"
+                    size_hint: 1, 4
+                    spacing: 10
+                    padding: 20
+                    Button:
+                        text: "戻る"
+                        on_press: root.screen_transition_btn(sm, "screen_default")
+                        background_color: 0.3,0.4,0.5,1
